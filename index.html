@@ -228,18 +228,36 @@
         const phone = document.getElementById("userphone").value;
         const pickup = document.getElementById("pickup").value;
         const drop = document.getElementById("drop").value;
-        const datetime = document.getElementById("datetime").value;
+        const datetimeRaw = document.getElementById("datetime").value;
 
-        const message = `*🚖 Taxi Booking Request*%0A
-*Name:* ${name}%0A
-*Phone:* ${phone}%0A
-*Pickup:* ${pickup}%0A
-*Drop:* ${drop}%0A
-*Date & Time:* ${datetime}%0A
-_______________________%0A
-UV Travels | 91156-95291`;
+        // Format datetime from "2025-04-19T17:30" to "19-Apr-2025 05:30 PM"
+        let formattedDateTime = "";
+        if (datetimeRaw) {
+          const dt = new Date(datetimeRaw);
+          const options = {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          };
+          formattedDateTime = dt.toLocaleString("en-IN", options);
+        }
 
-        const whatsappLink = `https://wa.me/919115695291?text=${message}`;
+        const message =
+          `*🚖 Taxi Booking Request*%0A` +
+          `*Name:* ${name}%0A` +
+          `*Phone:* ${phone}%0A` +
+          `*Pickup:* ${pickup}%0A` +
+          `*Drop:* ${drop}%0A` +
+          `*Date & Time:* ${formattedDateTime}%0A` +
+          `_______________________%0A` +
+          `UV Travels | 91156-95291`;
+
+        const whatsappLink = `https://wa.me/919115695291?text=${encodeURIComponent(
+          message
+        )}`;
         window.open(whatsappLink, "_blank");
       }
     </script>
