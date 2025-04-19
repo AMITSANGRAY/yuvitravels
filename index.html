@@ -245,19 +245,17 @@
           formattedDateTime = dt.toLocaleString("en-IN", options);
         }
 
-        const message =
-          `*🚖 Taxi Booking Request*%0A` +
-          `*Name:* ${name}%0A` +
-          `*Phone:* ${phone}%0A` +
-          `*Pickup:* ${pickup}%0A` +
-          `*Drop:* ${drop}%0A` +
-          `*Date & Time:* ${formattedDateTime}%0A` +
-          `_______________________%0A` +
-          `UV Travels | 91156-95291`;
+        const message = `*Taxi Booking Request*%0A` +
+                `*Name:* ${name}%0A` +
+                `*Phone:* ${phone}%0A` +
+                `*Pickup:* ${pickup}%0A` +
+                `*Drop:* ${drop}%0A` +
+                `*Date & Time:* ${formattedDateTime}%0A` +
+                `_ %0A` +
+                `UV Travels | 91156-95291`;
 
-        const whatsappLink = `https://wa.me/919115695291?text=${encodeURIComponent(
-          message
-        )}`;
+const whatsappLink = `https://wa.me/919915695291?text=${encodeURIComponent(message)}`;
+
         window.open(whatsappLink, "_blank");
       }
     </script>
